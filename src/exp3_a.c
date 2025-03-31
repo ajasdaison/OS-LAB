@@ -27,3 +27,9 @@ int main() {
 
   return 0;
 }
+
+/* OUTPUT:
+ Parent Process id is - 1939
+ Child Process id is - 1943
+ Mon Mar 31 17:56:26 IST 2025
+*/
