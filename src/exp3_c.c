@@ -1,10 +1,12 @@
 /**
  * @file exp3_c.c
- * @brief Demonstrates directory handling using `opendir()`, `readdir()`, and `closedir()`.
+ * @brief Demonstrates directory handling using `opendir()`, `readdir()`, and
+ * `closedir()`.
  *
- * This program prompts the user to enter a directory name and attempts to open it.
- * If successful, it lists the contents of the specified directory. If the user
- * provides invalid input, the program defaults to the current directory (`.`) to prevent errors.
+ * This program prompts the user to enter a directory name and attempts to open
+ * it. If successful, it lists the contents of the specified directory. If the
+ * user provides invalid input, the program defaults to the current directory
+ * (`.`) to prevent errors.
  *
  * @author Ajas Daison
  * @date 2025
@@ -20,7 +22,8 @@
  *
  * This function performs the following steps:
  * - Prompts the user for a directory name.
- * - If the user provides invalid input, it defaults to the current directory (`.`).
+ * - If the user provides invalid input, it defaults to the current directory
+ * (`.`).
  * - Attempts to open the directory using `opendir()`.
  * - If successful, reads and prints the directory contents using `readdir()`.
  * - If unsuccessful, prints an error message using `perror()`.
@@ -38,7 +41,8 @@ int main() {
 
   // Read directory name from user, ensuring safe input handling
   if (scanf("%255s", buff) != 1) {
-    fprintf(stderr, "Invalid input detected. Using current directory instead.\n");
+    fprintf(stderr,
+            "Invalid input detected. Using current directory instead.\n");
     strcpy(buff, "."); // Default to current directory
   }
 
@@ -91,4 +95,3 @@ int main() {
  * opendir: No such file or directory
  * @endcode
  */
-
