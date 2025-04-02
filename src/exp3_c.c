@@ -3,8 +3,8 @@
  * @brief Demonstrates directory handling using `opendir()`, `readdir()`, and `closedir()`.
  *
  * This program prompts the user to enter a directory name and attempts to open it.
- * If successful, it lists the contents of the specified directory. If the directory
- * does not exist or cannot be opened, an error message is displayed.
+ * If successful, it lists the contents of the specified directory. If the user
+ * provides invalid input, the program defaults to the current directory (`.`) to prevent errors.
  *
  * @author Ajas Daison
  * @date 2025
@@ -13,12 +13,14 @@
 #include <dirent.h> // For directory handling functions (opendir, readdir, closedir)
 #include <stdio.h>  // For printf, scanf, perror
 #include <stdlib.h> // For exit codes
+#include <string.h> // For strcpy
 
 /**
  * @brief Reads a directory name from the user and displays its contents.
  *
  * This function performs the following steps:
  * - Prompts the user for a directory name.
+ * - If the user provides invalid input, it defaults to the current directory (`.`).
  * - Attempts to open the directory using `opendir()`.
  * - If successful, reads and prints the directory contents using `readdir()`.
  * - If unsuccessful, prints an error message using `perror()`.
@@ -36,8 +38,8 @@ int main() {
 
   // Read directory name from user, ensuring safe input handling
   if (scanf("%255s", buff) != 1) {
-    printf("Invalid input\n");
-    return 1; // Exit with error if input fails
+    fprintf(stderr, "Invalid input detected. Using current directory instead.\n");
+    strcpy(buff, "."); // Default to current directory
   }
 
   // Attempt to open the specified directory
@@ -69,6 +71,18 @@ int main() {
  * file1.txt
  * file2.c
  * folder1
+ * @endcode
+ *
+ * If the user provides invalid input:
+ * @code
+ * Enter directory name: (invalid characters or empty input)
+ * Invalid input detected. Using current directory instead.
+ * Contents of directory .:
+ * .
+ * ..
+ * file1.txt
+ * src
+ * Makefile
  * @endcode
  *
  * If the directory does not exist:
