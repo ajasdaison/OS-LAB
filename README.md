@@ -1,4 +1,4 @@
-# C Lab Experiments
+# OS Lab Experiments
 
 This repository contains C programming lab experiments for college coursework. The experiments cover topics such as process handling, file operations, and directory manipulation. The documentation is generated using **Doxygen**.
 
@@ -68,11 +68,8 @@ in a web browser.
 
 - Uses **opendir(), readdir(), closedir()** to list files in a directory.
 
-## 🧑‍💻 Author
-
-**Ajas Daison**  
-Computer Science Engineering (BTech, 2nd Year)
-
 ---
 
-📌 **Note:** This repository is maintained for academic purposes. Contributions and suggestions are welcome!
+
+
+
