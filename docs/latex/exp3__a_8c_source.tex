@@ -1,0 +1,38 @@
+\doxysection{exp3\+\_\+a.\+c}
+\hypertarget{exp3__a_8c_source}{}\label{exp3__a_8c_source}\index{src/exp3\_a.c@{src/exp3\_a.c}}
+\mbox{\hyperlink{exp3__a_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <sys/wait.h>}}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00030}\mbox{\hyperlink{exp3__a_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{00030}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{exp3__a_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00031}00031\ \ \ \textcolor{keywordtype}{int}\ pid;\ \ }
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00033}00033\ \ \ \textcolor{comment}{//\ Create\ a\ child\ process}}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00034}00034\ \ \ pid\ =\ fork();}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00036}00036\ \ \ \textcolor{keywordflow}{if}\ (pid\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ fork\ failed}}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00038}00038\ \ \ \ \ printf(\textcolor{stringliteral}{"{}fork\ failed\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00039}00039\ \ \ \ \ exit(1);}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00040}00040\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (pid\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ Child\ process\ executes\ 'date'\ command}}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00042}00042\ \ \ \ \ execlp(\textcolor{stringliteral}{"{}/bin/date"{}},\ \textcolor{stringliteral}{"{}date"{}},\ NULL);}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00043}00043\ \ \ \ \ exit(0);}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00044}00044\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00045}00045\ \ \ \ \ \textcolor{comment}{//\ Parent\ process\ prints\ PIDs\ and\ waits\ for\ child}}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00046}00046\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Parent\ Process\ ID:\ \%d\(\backslash\)nChild\ Process\ ID:\ \%d\(\backslash\)n"{}},\ getpid(),\ pid);}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00047}00047\ \ \ \ \ wait(NULL);\ \ \textcolor{comment}{//\ Wait\ for\ the\ child\ process\ to\ complete}}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00048}00048\ \ \ \ \ exit(0);}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00049}00049\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00051}00051\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00052}00052\ \}}
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{exp3__a_8c_source_l00062}00062\ }
+
+\end{DoxyCode}
