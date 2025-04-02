@@ -22,7 +22,7 @@ This repository contains C programming lab experiments for college coursework. T
 To clone this repository, run:
 
 ```sh
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/ajasdaison/OS-LAB.git
 ```
 
 ### **2️⃣ Compiling the Programs**
@@ -48,7 +48,7 @@ This will generate documentation inside the `docs/` folder.
 To view the documentation, open:
 
 ```
-docs/html/index.html
+open docs/html/index.html
 ```
 
 in a web browser.
