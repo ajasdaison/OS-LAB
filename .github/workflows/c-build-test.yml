@@ -33,14 +33,17 @@ jobs:
             gcc -Wall -Wextra -o ${file%.c} $file || exit 1
           done
 
-      - name: Run Memory Leak Check with Valgrind
+      - name: Run Memory Leak Check with Valgrind (excluding shared memory programs)
         run: |
           for file in src/*.c; do
             output=${file%.c}
-            if [ -f "$output" ]; then
+            if [ -f "$output" ] && [[ "$output" != "src/exp4_shr_writer" ]] && [[ "$output" != "src/exp4_shr_reader" ]]; then
               valgrind --leak-check=full --error-exitcode=1 ./$output || exit 1
             fi
           done
+
+      - name: Run Shared Memory Tests with Valgrind
+        run: valgrind --leak-check=full --error-exitcode=1 ./scripts/run_shared_memory_test.sh
 
       - name: Generate Documentation with Doxygen
         run: doxygen Doxyfile

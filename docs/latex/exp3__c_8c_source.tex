@@ -3,43 +3,44 @@
 \mbox{\hyperlink{exp3__c_8c}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00001}00001\ }
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00012}00012\ }
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <dirent.h>}\ \textcolor{comment}{//\ For\ directory\ handling\ functions\ (opendir,\ readdir,\ closedir)}}
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <stdio.h>}\ \ \textcolor{comment}{//\ For\ printf,\ scanf,\ perror}}
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <stdlib.h>}\ \textcolor{comment}{//\ For\ exit\ codes}}
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00016}00016\ }
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00029}\mbox{\hyperlink{exp3__c_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{00029}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{exp3__c_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00030}00030\ \ \ \textcolor{keywordtype}{char}\ buff[256];\ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00031}00031\ \ \ DIR\ *dirp;\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00032}00032\ \ \ \textcolor{keyword}{struct\ }dirent\ *dptr;\ }
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00033}00033\ }
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00034}00034\ \ \ \textcolor{comment}{//\ Prompt\ user\ for\ directory\ name}}
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00035}00035\ \ \ printf(\textcolor{stringliteral}{"{}Enter\ directory\ name:\ "{}});}
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00036}00036\ }
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00037}00037\ \ \ \textcolor{comment}{//\ Read\ directory\ name\ from\ user,\ ensuring\ safe\ input\ handling}}
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00038}00038\ \ \ \textcolor{keywordflow}{if}\ (scanf(\textcolor{stringliteral}{"{}\%255s"{}},\ buff)\ !=\ 1)\ \{}
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00039}00039\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Invalid\ input\(\backslash\)n"{}});}
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;\ \textcolor{comment}{//\ Exit\ with\ error\ if\ input\ fails}}
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00041}00041\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00042}00042\ }
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00043}00043\ \ \ \textcolor{comment}{//\ Attempt\ to\ open\ the\ specified\ directory}}
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00044}00044\ \ \ \textcolor{keywordflow}{if}\ ((dirp\ =\ opendir(buff))\ ==\ NULL)\ \{}
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00045}00045\ \ \ \ \ perror(\textcolor{stringliteral}{"{}opendir"{}});\ \textcolor{comment}{//\ Print\ system-\/generated\ error\ message\ if\ opening\ fails}}
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Exit\ with\ error}}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <dirent.h>}\ \textcolor{comment}{//\ For\ directory\ handling\ functions\ (opendir,\ readdir,\ closedir)}}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <stdio.h>}\ \ \textcolor{comment}{//\ For\ printf,\ scanf,\ perror}}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ <stdlib.h>}\ \textcolor{comment}{//\ For\ exit\ codes}}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <string.h>}\ \textcolor{comment}{//\ For\ strcpy}}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00034}\mbox{\hyperlink{exp3__c_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{00034}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{exp3__c_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00035}00035\ \ \ \textcolor{keywordtype}{char}\ buff[256];\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00036}00036\ \ \ DIR\ *dirp;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00037}00037\ \ \ \textcolor{keyword}{struct\ }dirent\ *dptr;\ }
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00039}00039\ \ \ \textcolor{comment}{//\ Prompt\ user\ for\ directory\ name}}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00040}00040\ \ \ printf(\textcolor{stringliteral}{"{}Enter\ directory\ name:\ "{}});}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00042}00042\ \ \ \textcolor{comment}{//\ Read\ directory\ name\ from\ user,\ ensuring\ safe\ input\ handling}}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00043}00043\ \ \ \textcolor{keywordflow}{if}\ (scanf(\textcolor{stringliteral}{"{}\%255s"{}},\ buff)\ !=\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00044}00044\ \ \ \ \ fprintf(stderr,}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Invalid\ input\ detected.\ Using\ current\ directory\ instead.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00046}00046\ \ \ \ \ strcpy(buff,\ \textcolor{stringliteral}{"{}."{}});\ \textcolor{comment}{//\ Default\ to\ current\ directory}}
 \DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00047}00047\ \ \ \}}
 \DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00048}00048\ }
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00049}00049\ \ \ \textcolor{comment}{//\ Print\ directory\ contents}}
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00050}00050\ \ \ printf(\textcolor{stringliteral}{"{}Contents\ of\ directory\ \%s:\(\backslash\)n"{}},\ buff);}
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00051}00051\ \ \ \textcolor{keywordflow}{while}\ ((dptr\ =\ readdir(dirp))\ !=\ NULL)\ \{\ \textcolor{comment}{//\ Read\ each\ directory\ entry}}
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00052}00052\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\(\backslash\)n"{}},\ dptr-\/>d\_name);\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Print\ file/directory\ name}}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00049}00049\ \ \ \textcolor{comment}{//\ Attempt\ to\ open\ the\ specified\ directory}}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00050}00050\ \ \ \textcolor{keywordflow}{if}\ ((dirp\ =\ opendir(buff))\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00051}00051\ \ \ \ \ perror(\textcolor{stringliteral}{"{}opendir"{}});\ \textcolor{comment}{//\ Print\ system-\/generated\ error\ message\ if\ opening\ fails}}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Exit\ with\ error}}
 \DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00053}00053\ \ \ \}}
 \DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00054}00054\ }
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00055}00055\ \ \ \textcolor{comment}{//\ Close\ the\ directory\ stream\ after\ use}}
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00056}00056\ \ \ closedir(dirp);}
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00057}00057\ }
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00058}00058\ \ \ \textcolor{keywordflow}{return}\ 0;\ \textcolor{comment}{//\ Exit\ successfully}}
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00059}00059\ \}}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00055}00055\ \ \ \textcolor{comment}{//\ Print\ directory\ contents}}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00056}00056\ \ \ printf(\textcolor{stringliteral}{"{}Contents\ of\ directory\ \%s:\(\backslash\)n"{}},\ buff);}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00057}00057\ \ \ \textcolor{keywordflow}{while}\ ((dptr\ =\ readdir(dirp))\ !=\ NULL)\ \{\ \textcolor{comment}{//\ Read\ each\ directory\ entry}}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00058}00058\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\(\backslash\)n"{}},\ dptr-\/>d\_name);\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Print\ file/directory\ name}}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00059}00059\ \ \ \}}
 \DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00060}00060\ }
-\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00061}00061\ \ \ \textcolor{comment}{//\ Close\ the\ directory\ stream\ after\ use}}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00062}00062\ \ \ closedir(dirp);}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00064}00064\ \ \ \textcolor{keywordflow}{return}\ 0;\ \textcolor{comment}{//\ Exit\ successfully}}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00065}00065\ \}}
+\DoxyCodeLine{\Hypertarget{exp3__c_8c_source_l00066}00066\ }
 
 \end{DoxyCode}

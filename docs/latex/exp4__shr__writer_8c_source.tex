@@ -1,0 +1,58 @@
+\doxysection{exp4\+\_\+shr\+\_\+writer.\+c}
+\hypertarget{exp4__shr__writer_8c_source}{}\label{exp4__shr__writer_8c_source}\index{src/exp4\_shr\_writer.c@{src/exp4\_shr\_writer.c}}
+\mbox{\hyperlink{exp4__shr__writer_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <sys/ipc.h>}}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ <sys/shm.h>}}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00032}\mbox{\hyperlink{exp4__shr__writer_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{00032}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{exp4__shr__writer_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00033}00033\ \ \ \textcolor{keywordtype}{void}\ *shared\_memory;\ }
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00034}00034\ \ \ \textcolor{keywordtype}{char}\ buffer[100]\ =\ \{}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00035}00035\ \ \ \ \ \ \ 0\};\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00036}00036\ \ \ \textcolor{keywordtype}{int}\ shmid;\ }
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00038}00038\ \ \ \textcolor{comment}{//\ Create\ a\ shared\ memory\ segment\ with\ key\ 1222\ and\ size\ 1024\ bytes}}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00039}00039\ \ \ shmid\ =\ shmget((key\_t)1222,\ 1024,\ 0666\ |\ IPC\_CREAT);}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00040}00040\ \ \ \textcolor{keywordflow}{if}\ (shmid\ ==\ -\/1)\ \{}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00041}00041\ \ \ \ \ perror(\textcolor{stringliteral}{"{}shmget\ failed"{}});}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00042}00042\ \ \ \ \ exit(1);}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00043}00043\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00045}00045\ \ \ printf(\textcolor{stringliteral}{"{}Shared\ Memory\ ID:\ \%d\(\backslash\)n"{}},\ shmid);}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00047}00047\ \ \ \textcolor{comment}{//\ Attach\ shared\ memory\ to\ process\ address\ space}}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00048}00048\ \ \ shared\_memory\ =\ shmat(shmid,\ NULL,\ 0);}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00049}00049\ \ \ \textcolor{keywordflow}{if}\ (shared\_memory\ ==\ (\textcolor{keywordtype}{void}\ *)-\/1)\ \{}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00050}00050\ \ \ \ \ perror(\textcolor{stringliteral}{"{}shmat\ failed"{}});}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00051}00051\ \ \ \ \ exit(1);}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00052}00052\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00054}00054\ \ \ printf(\textcolor{stringliteral}{"{}Process\ attached\ at\ address:\ \%p\(\backslash\)n"{}},\ shared\_memory);}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00055}00055\ \ \ printf(\textcolor{stringliteral}{"{}Enter\ some\ data\ to\ write\ to\ shared\ memory:\ \(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00057}00057\ \ \ \textcolor{comment}{//\ Read\ input\ from\ user\ using\ fgets\ to\ avoid\ buffer\ overflow}}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00058}00058\ \ \ \textcolor{keywordflow}{if}\ (fgets(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ stdin)\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00059}00059\ \ \ \ \ perror(\textcolor{stringliteral}{"{}Error\ reading\ input"{}});}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00060}00060\ \ \ \ \ shmdt(shared\_memory);}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00061}00061\ \ \ \ \ exit(1);}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00062}00062\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00064}00064\ \ \ \textcolor{comment}{//\ Copy\ input\ to\ shared\ memory}}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00065}00065\ \ \ strncpy((\textcolor{keywordtype}{char}\ *)shared\_memory,\ buffer,\ 100);}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00067}00067\ \ \ printf(\textcolor{stringliteral}{"{}Data\ written\ to\ shared\ memory:\ \%s\(\backslash\)n"{}},\ (\textcolor{keywordtype}{char}\ *)shared\_memory);}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00069}00069\ \ \ \textcolor{comment}{//\ Detach\ shared\ memory}}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00070}00070\ \ \ shmdt(shared\_memory);}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00072}00072\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00073}00073\ \}}
+\DoxyCodeLine{\Hypertarget{exp4__shr__writer_8c_source_l00074}00074\ }
+
+\end{DoxyCode}

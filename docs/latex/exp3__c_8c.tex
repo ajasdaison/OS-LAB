@@ -8,6 +8,7 @@ Demonstrates directory handling using {\ttfamily opendir()}, {\ttfamily readdir(
 {\ttfamily \#include $<$dirent.\+h$>$}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -18,7 +19,7 @@ int \mbox{\hyperlink{exp3__c_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
 \doxysubsection{Detailed Description}
 Demonstrates directory handling using {\ttfamily opendir()}, {\ttfamily readdir()}, and {\ttfamily closedir()}. 
 
-This program prompts the user to enter a directory name and attempts to open it. If successful, it lists the contents of the specified directory. If the directory does not exist or cannot be opened, an error message is displayed.
+This program prompts the user to enter a directory name and attempts to open it. If successful, it lists the contents of the specified directory. If the user provides invalid input, the program defaults to the current directory ({\ttfamily .}) to prevent errors.
 
 \begin{DoxyAuthor}{Author}
 Ajas Daison 
@@ -46,6 +47,7 @@ Reads a directory name from the user and displays its contents.
 This function performs the following steps\+:
 \begin{DoxyItemize}
 \item Prompts the user for a directory name.
+\item If the user provides invalid input, it defaults to the current directory ({\ttfamily .}).
 \item Attempts to open the directory using {\ttfamily opendir()}.
 \item If successful, reads and prints the directory contents using {\ttfamily readdir()}.
 \item If unsuccessful, prints an error message using {\ttfamily perror()}.
@@ -61,40 +63,41 @@ int Returns 0 on success, 1 if an error occurs.
 
 \texorpdfstring{$<$}{<} Pointer to directory entry structure
 
-Definition at line \mbox{\hyperlink{exp3__c_8c_source_l00029}{29}} of file \mbox{\hyperlink{exp3__c_8c_source}{exp3\+\_\+c.\+c}}.
+Definition at line \mbox{\hyperlink{exp3__c_8c_source_l00034}{34}} of file \mbox{\hyperlink{exp3__c_8c_source}{exp3\+\_\+c.\+c}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{char}\ buff[256];\ \ \ \ \ \ }
-\DoxyCodeLine{00031\ \ \ DIR\ *dirp;\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00032\ \ \ \textcolor{keyword}{struct\ }dirent\ *dptr;\ }
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \ \ \textcolor{comment}{//\ Prompt\ user\ for\ directory\ name}}
-\DoxyCodeLine{00035\ \ \ printf(\textcolor{stringliteral}{"{}Enter\ directory\ name:\ "{}});}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \ \ \textcolor{comment}{//\ Read\ directory\ name\ from\ user,\ ensuring\ safe\ input\ handling}}
-\DoxyCodeLine{00038\ \ \ \textcolor{keywordflow}{if}\ (scanf(\textcolor{stringliteral}{"{}\%255s"{}},\ buff)\ !=\ 1)\ \{}
-\DoxyCodeLine{00039\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Invalid\ input\(\backslash\)n"{}});}
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;\ \textcolor{comment}{//\ Exit\ with\ error\ if\ input\ fails}}
-\DoxyCodeLine{00041\ \ \ \}}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ \ \ \textcolor{comment}{//\ Attempt\ to\ open\ the\ specified\ directory}}
-\DoxyCodeLine{00044\ \ \ \textcolor{keywordflow}{if}\ ((dirp\ =\ opendir(buff))\ ==\ NULL)\ \{}
-\DoxyCodeLine{00045\ \ \ \ \ perror(\textcolor{stringliteral}{"{}opendir"{}});\ \textcolor{comment}{//\ Print\ system-\/generated\ error\ message\ if\ opening\ fails}}
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Exit\ with\ error}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{char}\ buff[256];\ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ DIR\ *dirp;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \textcolor{keyword}{struct\ }dirent\ *dptr;\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \textcolor{comment}{//\ Prompt\ user\ for\ directory\ name}}
+\DoxyCodeLine{00040\ \ \ printf(\textcolor{stringliteral}{"{}Enter\ directory\ name:\ "{}});}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \textcolor{comment}{//\ Read\ directory\ name\ from\ user,\ ensuring\ safe\ input\ handling}}
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordflow}{if}\ (scanf(\textcolor{stringliteral}{"{}\%255s"{}},\ buff)\ !=\ 1)\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ fprintf(stderr,}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Invalid\ input\ detected.\ Using\ current\ directory\ instead.\(\backslash\)n"{}});}
+\DoxyCodeLine{00046\ \ \ \ \ strcpy(buff,\ \textcolor{stringliteral}{"{}."{}});\ \textcolor{comment}{//\ Default\ to\ current\ directory}}
 \DoxyCodeLine{00047\ \ \ \}}
 \DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ \ \ \textcolor{comment}{//\ Print\ directory\ contents}}
-\DoxyCodeLine{00050\ \ \ printf(\textcolor{stringliteral}{"{}Contents\ of\ directory\ \%s:\(\backslash\)n"{}},\ buff);}
-\DoxyCodeLine{00051\ \ \ \textcolor{keywordflow}{while}\ ((dptr\ =\ readdir(dirp))\ !=\ NULL)\ \{\ \textcolor{comment}{//\ Read\ each\ directory\ entry}}
-\DoxyCodeLine{00052\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\(\backslash\)n"{}},\ dptr-\/>d\_name);\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Print\ file/directory\ name}}
+\DoxyCodeLine{00049\ \ \ \textcolor{comment}{//\ Attempt\ to\ open\ the\ specified\ directory}}
+\DoxyCodeLine{00050\ \ \ \textcolor{keywordflow}{if}\ ((dirp\ =\ opendir(buff))\ ==\ NULL)\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ perror(\textcolor{stringliteral}{"{}opendir"{}});\ \textcolor{comment}{//\ Print\ system-\/generated\ error\ message\ if\ opening\ fails}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Exit\ with\ error}}
 \DoxyCodeLine{00053\ \ \ \}}
 \DoxyCodeLine{00054\ }
-\DoxyCodeLine{00055\ \ \ \textcolor{comment}{//\ Close\ the\ directory\ stream\ after\ use}}
-\DoxyCodeLine{00056\ \ \ closedir(dirp);}
-\DoxyCodeLine{00057\ }
-\DoxyCodeLine{00058\ \ \ \textcolor{keywordflow}{return}\ 0;\ \textcolor{comment}{//\ Exit\ successfully}}
-\DoxyCodeLine{00059\ \}}
+\DoxyCodeLine{00055\ \ \ \textcolor{comment}{//\ Print\ directory\ contents}}
+\DoxyCodeLine{00056\ \ \ printf(\textcolor{stringliteral}{"{}Contents\ of\ directory\ \%s:\(\backslash\)n"{}},\ buff);}
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordflow}{while}\ ((dptr\ =\ readdir(dirp))\ !=\ NULL)\ \{\ \textcolor{comment}{//\ Read\ each\ directory\ entry}}
+\DoxyCodeLine{00058\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\(\backslash\)n"{}},\ dptr-\/>d\_name);\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Print\ file/directory\ name}}
+\DoxyCodeLine{00059\ \ \ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \textcolor{comment}{//\ Close\ the\ directory\ stream\ after\ use}}
+\DoxyCodeLine{00062\ \ \ closedir(dirp);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \textcolor{keywordflow}{return}\ 0;\ \textcolor{comment}{//\ Exit\ successfully}}
+\DoxyCodeLine{00065\ \}}
 
 \end{DoxyCode}

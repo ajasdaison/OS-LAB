@@ -109,7 +109,7 @@ $(function(){initNavTree('exp3__b_8c.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>Demonstrates the use of <code>stat()</code> system call to retrieve file information.  
+<p>Program to retrieve and display file information using <code>stat()</code>.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;sys/stat.h&gt;</code><br />
@@ -119,19 +119,14 @@ $(function(){initNavTree('exp3__b_8c.html',''); initResizable(true); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4" id="r_ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
-<tr class="memdesc:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves and prints file information using <code>stat()</code>.  <br /></td></tr>
+<tr class="memdesc:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main function to retrieve and display file information.  <br /></td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Demonstrates the use of <code>stat()</code> system call to retrieve file information. </p>
-<p>This program uses the <code>stat()</code> system call to obtain information about a file named <code>hello.txt</code>. If the file exists, it displays details such as:</p><ul>
-<li>File mode (permissions) in octal format.</li>
-<li>User ID of the file owner.</li>
-<li>File size in bytes.</li>
-</ul>
-<p>If the file does not exist, an error message is printed using <code>perror()</code>.</p>
+<div class="textblock"><p>Program to retrieve and display file information using <code>stat()</code>. </p>
+<p>This program checks for the existence of "hello.txt" and displays its metadata, including file mode, owner user ID, and size. If the file does not exist, it prints an error message and skips further execution.</p>
 <dl class="section author"><dt>Author</dt><dd>Ajas Daison </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>April 2, 2025 </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="exp3__b_8c_source.html">exp3_b.c</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -150,36 +145,33 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Retrieves and prints file information using <code>stat()</code>. </p>
-<p>The function attempts to retrieve file metadata for <code>hello.txt</code> using the <code>stat()</code> system call. If successful, it prints:</p><ul>
-<li><code>st_mode</code> (file mode/permissions) in octal.</li>
-<li><code>st_uid</code> (user ID of the file owner).</li>
-<li><code>st_size</code> (file size in bytes).</li>
-</ul>
-<p>If <code>stat()</code> fails (e.g., the file does not exist), an error message is displayed.</p>
-<dl class="section return"><dt>Returns</dt><dd>int Returns 0 on success, 1 if <code>stat()</code> fails. </dd></dl>
-<p>&lt; Structure to store file information</p>
+<p>Main function to retrieve and display file information. </p>
+<p>The program attempts to get metadata of "hello.txt" using <code>stat()</code>. If the file does not exist, it prints an error message and exits without failure.</p>
+<dl class="section return"><dt>Returns</dt><dd>Returns 0 on successful execution. </dd></dl>
+<p>&lt; Print system-generated error message</p>
 <p>&lt; Print file mode in octal</p>
 <p>&lt; Print user ID of owner</p>
-<p>&lt; Print file size in bytes</p>
+<p>&lt; Print file size</p>
 
-<p class="definition">Definition at line <a class="el" href="exp3__b_8c_source.html#l00033">33</a> of file <a class="el" href="exp3__b_8c_source.html">exp3_b.c</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   33</span>           {</div>
-<div class="line"><span class="lineno">   34</span>  <span class="keyword">struct </span>stat sfile; </div>
-<div class="line"><span class="lineno">   35</span> </div>
-<div class="line"><span class="lineno">   36</span>  <span class="comment">// Attempt to get file information</span></div>
-<div class="line"><span class="lineno">   37</span>  <span class="keywordflow">if</span> (stat(<span class="stringliteral">&quot;hello.txt&quot;</span>, &amp;sfile) == -1) {</div>
-<div class="line"><span class="lineno">   38</span>    perror(<span class="stringliteral">&quot;stat&quot;</span>); <span class="comment">// Print error message if file does not exist</span></div>
-<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">return</span> 1;       <span class="comment">// Exit with an error code</span></div>
-<div class="line"><span class="lineno">   40</span>  }</div>
-<div class="line"><span class="lineno">   41</span> </div>
-<div class="line"><span class="lineno">   42</span>  printf(<span class="stringliteral">&quot;\nst_mode = %o\n&quot;</span>, sfile.st_mode);  </div>
-<div class="line"><span class="lineno">   43</span>  printf(<span class="stringliteral">&quot;File st_uid = %d\n&quot;</span>, sfile.st_uid); </div>
-<div class="line"><span class="lineno">   44</span>  printf(<span class="stringliteral">&quot;File st_size = %lld bytes\n&quot;</span>,</div>
-<div class="line"><span class="lineno">   45</span>         (<span class="keywordtype">long</span> <span class="keywordtype">long</span>)sfile.st_size); </div>
-<div class="line"><span class="lineno">   46</span> </div>
-<div class="line"><span class="lineno">   47</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   48</span>}</div>
+<p class="definition">Definition at line <a class="el" href="exp3__b_8c_source.html#l00024">24</a> of file <a class="el" href="exp3__b_8c_source.html">exp3_b.c</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   24</span>           {</div>
+<div class="line"><span class="lineno">   25</span>  <span class="keyword">struct </span>stat sfile;</div>
+<div class="line"><span class="lineno">   26</span> </div>
+<div class="line"><span class="lineno">   27</span>  <span class="comment">// Attempt to get file information</span></div>
+<div class="line"><span class="lineno">   28</span>  <span class="keywordflow">if</span> (stat(<span class="stringliteral">&quot;hello.txt&quot;</span>, &amp;sfile) == -1) {</div>
+<div class="line"><span class="lineno">   29</span>    perror(<span class="stringliteral">&quot;stat&quot;</span>); </div>
+<div class="line"><span class="lineno">   30</span>    printf(<span class="stringliteral">&quot;File does not exist. Skipping...\n&quot;</span>);</div>
+<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">return</span> 0; <span class="comment">// Do not exit with error</span></div>
+<div class="line"><span class="lineno">   32</span>  }</div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>  <span class="comment">// Print file information</span></div>
+<div class="line"><span class="lineno">   35</span>  printf(<span class="stringliteral">&quot;\nst_mode = %o\n&quot;</span>, sfile.st_mode);  </div>
+<div class="line"><span class="lineno">   36</span>  printf(<span class="stringliteral">&quot;File st_uid = %d\n&quot;</span>, sfile.st_uid); </div>
+<div class="line"><span class="lineno">   37</span>  printf(<span class="stringliteral">&quot;File st_size = %lld bytes\n&quot;</span>,</div>
+<div class="line"><span class="lineno">   38</span>         (<span class="keywordtype">long</span> <span class="keywordtype">long</span>)sfile.st_size); </div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   41</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
