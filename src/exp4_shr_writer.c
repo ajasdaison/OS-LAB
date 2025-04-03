@@ -23,7 +23,7 @@
  * This function performs the following steps:
  * - Creates a shared memory segment with key `1222`.
  * - Attaches the segment to the process's address space.
- * - Reads input from the user and stores it in shared memory.
+ * - Reads input from the user using `fgets()` and stores it in shared memory.
  * - Prints the shared memory address and content.
  * - Detaches the shared memory before exiting.
  *
@@ -31,9 +31,9 @@
  */
 int main() {
   void *shared_memory; /**< Pointer to the shared memory segment */
-  char buffer[100];    /**< Buffer to store user input before copying to shared
-                          memory */
-  int shmid;           /**< Shared memory segment ID */
+  char buffer[100] = {
+      0};    /**< Buffer initialized to prevent uninitialized memory issues */
+  int shmid; /**< Shared memory segment ID */
 
   // Create a shared memory segment with key 1222 and size 1024 bytes
   shmid = shmget((key_t)1222, 1024, 0666 | IPC_CREAT);
@@ -54,11 +54,15 @@ int main() {
   printf("Process attached at address: %p\n", shared_memory);
   printf("Enter some data to write to shared memory: \n");
 
-  // Read input from user
-  read(STDIN_FILENO, buffer, 100);
+  // Read input from user using fgets to avoid buffer overflow
+  if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
+    perror("Error reading input");
+    shmdt(shared_memory);
+    exit(1);
+  }
 
   // Copy input to shared memory
-  strcpy((char *)shared_memory, buffer);
+  strncpy((char *)shared_memory, buffer, 100);
 
   printf("Data written to shared memory: %s\n", (char *)shared_memory);
 
