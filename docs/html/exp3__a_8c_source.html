@@ -131,7 +131,7 @@ $(function(){initNavTree('exp3__a_8c_source.html',''); initResizable(true); });
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="comment">// Parent process prints PIDs and waits for child</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    printf(<span class="stringliteral">&quot;Parent Process ID: %d\nChild Process ID: %d\n&quot;</span>, getpid(), pid);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    wait(NULL); <span class="comment">// Wait for the child process to complete</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <a class="code hl_function" href="exp5_8c.html#a5707b25e46a5abb6a19f65efb29d0afb">wait</a>(NULL); <span class="comment">// Wait for the child process to complete</span></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    exit(0);</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  }</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
@@ -140,6 +140,7 @@ $(function(){initNavTree('exp3__a_8c_source.html',''); initResizable(true); });
 </div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span></div>
 <div class="ttc" id="aexp3__a_8c_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="exp3__a_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdoc">Creates a child process that executes the date command.</div><div class="ttdef"><b>Definition</b> <a href="#l00033">exp3_a.c:33</a></div></div>
+<div class="ttc" id="aexp5_8c_html_a5707b25e46a5abb6a19f65efb29d0afb"><div class="ttname"><a href="exp5_8c.html#a5707b25e46a5abb6a19f65efb29d0afb">wait</a></div><div class="ttdeci">int wait(int *S)</div><div class="ttdoc">Simulates the &quot;Wait&quot; operation on a semaphore.</div><div class="ttdef"><b>Definition</b> <a href="exp5_8c_source.html#l00029">exp5.c:29</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

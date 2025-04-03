@@ -12,6 +12,7 @@ This repository contains C programming lab experiments for college coursework. T
 │   ├── exp3_c.c          # Experiment 3C - Directory handling using opendir(), readdir()
 │   ├── exp4_shr_writer.c # Experiment 4 - Shared memory communication (Writer)
 │   ├── exp4_shr_reader.c # Experiment 4 - Shared memory communication (Reader)
+│   ├── exp5.c            # Experiment 5 - Producer-Consumer problem using Semaphores
 │── README.md             # This file
 │── Doxyfile              # Configuration file for Doxygen
 │── docs/                 # Auto-generated documentation (after running Doxygen)
@@ -83,6 +84,16 @@ in a web browser.
   - Reads data from the shared memory.
   - Displays the content written by another process.
   - Detaches and removes the shared memory segment after reading.
+### **🔹 Experiment 5: Producer-Consumer Problem using Semaphores**
+
+- Demonstrates synchronization between multiple processes using semaphores.
+- Implements a **producer-consumer** model with a shared buffer of size 3.
+- Uses **mutex**, **full**, and **empty** semaphores to coordinate buffer access.
+- The producer adds items to the buffer, while the consumer removes them, preventing race conditions.
+- The **`exp5.c`** program:
+  - Uses **binary and counting semaphores** for mutual exclusion and synchronization.
+  - Implements **wait()** and **signal()** operations.
+  - Allows the user to choose between producing or consuming an item.
 
 ---
 

@@ -2,7 +2,7 @@
 \hypertarget{exp3__a_8c}{}\label{exp3__a_8c}\index{src/exp3\_a.c@{src/exp3\_a.c}}
 
 
-Demonstrates process creation using fork(), exec(), and wait() system calls.  
+Demonstrates process creation using fork(), exec(), and \doxylink{exp5_8c_a5707b25e46a5abb6a19f65efb29d0afb}{wait()} system calls.  
 
 
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
@@ -17,9 +17,9 @@ int \mbox{\hyperlink{exp3__a_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
 
 
 \doxysubsection{Detailed Description}
-Demonstrates process creation using fork(), exec(), and wait() system calls. 
+Demonstrates process creation using fork(), exec(), and \doxylink{exp5_8c_a5707b25e46a5abb6a19f65efb29d0afb}{wait()} system calls. 
 
-This program creates a child process using {\ttfamily fork()}. The child process then replaces itself with the {\ttfamily /bin/date} command using {\ttfamily execlp()}. The parent process waits for the child process to complete using {\ttfamily wait()}. This demonstrates process control in Unix-\/based operating systems.
+This program creates a child process using {\ttfamily fork()}. The child process then replaces itself with the {\ttfamily /bin/date} command using {\ttfamily execlp()}. The parent process waits for the child process to complete using {\ttfamily \doxylink{exp5_8c_a5707b25e46a5abb6a19f65efb29d0afb}{wait()}}. This demonstrates process control in Unix-\/based operating systems.
 
 \begin{DoxyAuthor}{Author}
 Ajas Daison 
@@ -78,7 +78,7 @@ Definition at line \mbox{\hyperlink{exp3__a_8c_source_l00033}{33}} of file \mbox
 \DoxyCodeLine{00047\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
 \DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ Parent\ process\ prints\ PIDs\ and\ waits\ for\ child}}
 \DoxyCodeLine{00049\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Parent\ Process\ ID:\ \%d\(\backslash\)nChild\ Process\ ID:\ \%d\(\backslash\)n"{}},\ getpid(),\ pid);}
-\DoxyCodeLine{00050\ \ \ \ \ wait(NULL);\ \textcolor{comment}{//\ Wait\ for\ the\ child\ process\ to\ complete}}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{exp5_8c_a5707b25e46a5abb6a19f65efb29d0afb}{wait}}(NULL);\ \textcolor{comment}{//\ Wait\ for\ the\ child\ process\ to\ complete}}
 \DoxyCodeLine{00051\ \ \ \ \ exit(0);}
 \DoxyCodeLine{00052\ \ \ \}}
 \DoxyCodeLine{00053\ }
