@@ -64,6 +64,8 @@ int main() {
            "and Consumer\n4. Exit\nEnter your choice: ");
 
     if (scanf("%d", &choice) != 1) { // Validate input
+      while (getchar() != '\n')
+        ; // Clear buffer
       printf("Invalid input! Exiting...\n");
       exit(1);
     }
@@ -72,12 +74,10 @@ int main() {
     case 1:
       pthread_create(&prod, NULL, producer, NULL);
       printf("Producer started...\n");
-      pthread_join(prod, NULL); // Wait for producer to finish
       break;
     case 2:
       pthread_create(&cons, NULL, consumer, NULL);
       printf("Consumer started...\n");
-      pthread_join(cons, NULL); // Wait for consumer to finish
       break;
     case 3:
       pthread_create(&prod, NULL, producer, NULL);
