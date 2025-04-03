@@ -45,7 +45,5 @@ jobs:
       - name: Run Shared Memory Tests with Valgrind
         run: valgrind --leak-check=full --error-exitcode=1 ./scripts/run_shared_memory_test.sh
 
-      - name: Generate Documentation with Doxygen
-        run: doxygen Doxyfile
 
 
