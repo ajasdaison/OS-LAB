@@ -1,0 +1,92 @@
+\doxysection{src/exp4\+\_\+shr\+\_\+reader.c File Reference}
+\hypertarget{exp4__shr__reader_8c}{}\label{exp4__shr__reader_8c}\index{src/exp4\_shr\_reader.c@{src/exp4\_shr\_reader.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$sys/ipc.\+h$>$}\newline
+{\ttfamily \#include $<$sys/shm.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{exp4__shr__reader_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Main function to create and write to shared memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{exp4__shr__reader_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{exp4\_shr\_reader.c@{exp4\_shr\_reader.c}!main@{main}}
+\index{main@{main}!exp4\_shr\_reader.c@{exp4\_shr\_reader.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{exp4__shr__reader_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Main function to create and write to shared memory. 
+
+This function performs the following steps\+:
+\begin{DoxyItemize}
+\item Creates a shared memory segment with key {\ttfamily 1222}.
+\item Attaches the segment to the process\textquotesingle{}s address space.
+\item Reads input from the user using {\ttfamily fgets()} and stores it in shared memory.
+\item Prints the shared memory address and content.
+\item Detaches the shared memory before exiting.
+\end{DoxyItemize}
+
+\begin{DoxyReturn}{Returns}
+int Returns 0 on success, exits with error code 1 on failure. 
+\end{DoxyReturn}
+\texorpdfstring{$<$}{<} Pointer to the shared memory segment
+
+\texorpdfstring{$<$}{<} Buffer initialized to prevent uninitialized memory issues
+
+\texorpdfstring{$<$}{<} Shared memory segment ID
+
+Definition at line \mbox{\hyperlink{exp4__shr__reader_8c_source_l00032}{32}} of file \mbox{\hyperlink{exp4__shr__reader_8c_source}{exp4\+\_\+shr\+\_\+reader.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{void}\ *shared\_memory;\ }
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{char}\ buffer[100]\ =\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ 0\};\ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{int}\ shmid;\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \textcolor{comment}{//\ Create\ a\ shared\ memory\ segment\ with\ key\ 1222\ and\ size\ 1024\ bytes}}
+\DoxyCodeLine{00039\ \ \ shmid\ =\ shmget((key\_t)1222,\ 1024,\ 0666\ |\ IPC\_CREAT);}
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordflow}{if}\ (shmid\ ==\ -\/1)\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ perror(\textcolor{stringliteral}{"{}shmget\ failed"{}});}
+\DoxyCodeLine{00042\ \ \ \ \ exit(1);}
+\DoxyCodeLine{00043\ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ printf(\textcolor{stringliteral}{"{}Shared\ Memory\ ID:\ \%d\(\backslash\)n"{}},\ shmid);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \textcolor{comment}{//\ Attach\ shared\ memory\ to\ process\ address\ space}}
+\DoxyCodeLine{00048\ \ \ shared\_memory\ =\ shmat(shmid,\ NULL,\ 0);}
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordflow}{if}\ (shared\_memory\ ==\ (\textcolor{keywordtype}{void}\ *)-\/1)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ perror(\textcolor{stringliteral}{"{}shmat\ failed"{}});}
+\DoxyCodeLine{00051\ \ \ \ \ exit(1);}
+\DoxyCodeLine{00052\ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ printf(\textcolor{stringliteral}{"{}Process\ attached\ at\ address:\ \%p\(\backslash\)n"{}},\ shared\_memory);}
+\DoxyCodeLine{00055\ \ \ printf(\textcolor{stringliteral}{"{}Enter\ some\ data\ to\ write\ to\ shared\ memory:\ \(\backslash\)n"{}});}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \textcolor{comment}{//\ Read\ input\ from\ user\ using\ fgets\ to\ avoid\ buffer\ overflow}}
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordflow}{if}\ (fgets(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ stdin)\ ==\ NULL)\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ perror(\textcolor{stringliteral}{"{}Error\ reading\ input"{}});}
+\DoxyCodeLine{00060\ \ \ \ \ shmdt(shared\_memory);}
+\DoxyCodeLine{00061\ \ \ \ \ exit(1);}
+\DoxyCodeLine{00062\ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \textcolor{comment}{//\ Copy\ input\ to\ shared\ memory}}
+\DoxyCodeLine{00065\ \ \ strncpy((\textcolor{keywordtype}{char}\ *)shared\_memory,\ buffer,\ 100);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ printf(\textcolor{stringliteral}{"{}Data\ written\ to\ shared\ memory:\ \%s\(\backslash\)n"{}},\ (\textcolor{keywordtype}{char}\ *)shared\_memory);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \textcolor{comment}{//\ Detach\ shared\ memory}}
+\DoxyCodeLine{00070\ \ \ shmdt(shared\_memory);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00073\ \}}
+
+\end{DoxyCode}

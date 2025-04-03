@@ -57,32 +57,32 @@ int Returns 0 upon successful execution.
 \end{DoxyReturn}
 \texorpdfstring{$<$}{<} Variable to store the process ID
 
-Definition at line \mbox{\hyperlink{exp3__a_8c_source_l00030}{30}} of file \mbox{\hyperlink{exp3__a_8c_source}{exp3\+\_\+a.\+c}}.
+Definition at line \mbox{\hyperlink{exp3__a_8c_source_l00033}{33}} of file \mbox{\hyperlink{exp3__a_8c_source}{exp3\+\_\+a.\+c}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{int}\ pid;\ \ }
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \textcolor{comment}{//\ Create\ a\ child\ process}}
-\DoxyCodeLine{00034\ \ \ pid\ =\ fork();}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{int}\ pid;\ }
 \DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \ \ \textcolor{keywordflow}{if}\ (pid\ <\ 0)\ \{}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ fork\ failed}}
-\DoxyCodeLine{00038\ \ \ \ \ printf(\textcolor{stringliteral}{"{}fork\ failed\(\backslash\)n"{}});}
-\DoxyCodeLine{00039\ \ \ \ \ exit(1);}
-\DoxyCodeLine{00040\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (pid\ ==\ 0)\ \{}
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ Child\ process\ executes\ 'date'\ command}}
-\DoxyCodeLine{00042\ \ \ \ \ execlp(\textcolor{stringliteral}{"{}/bin/date"{}},\ \textcolor{stringliteral}{"{}date"{}},\ NULL);}
-\DoxyCodeLine{00043\ \ \ \ \ exit(0);}
-\DoxyCodeLine{00044\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ Parent\ process\ prints\ PIDs\ and\ waits\ for\ child}}
-\DoxyCodeLine{00046\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Parent\ Process\ ID:\ \%d\(\backslash\)nChild\ Process\ ID:\ \%d\(\backslash\)n"{}},\ getpid(),\ pid);}
-\DoxyCodeLine{00047\ \ \ \ \ wait(NULL);\ \ \textcolor{comment}{//\ Wait\ for\ the\ child\ process\ to\ complete}}
-\DoxyCodeLine{00048\ \ \ \ \ exit(0);}
-\DoxyCodeLine{00049\ \ \ \}}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \ \ \textcolor{keywordflow}{return}\ 0;}
-\DoxyCodeLine{00052\ \}}
+\DoxyCodeLine{00036\ \ \ \textcolor{comment}{//\ Create\ a\ child\ process}}
+\DoxyCodeLine{00037\ \ \ pid\ =\ fork();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordflow}{if}\ (pid\ <\ 0)\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ Check\ if\ fork\ failed}}
+\DoxyCodeLine{00041\ \ \ \ \ printf(\textcolor{stringliteral}{"{}fork\ failed\(\backslash\)n"{}});}
+\DoxyCodeLine{00042\ \ \ \ \ exit(1);}
+\DoxyCodeLine{00043\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (pid\ ==\ 0)\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ Child\ process\ executes\ 'date'\ command}}
+\DoxyCodeLine{00045\ \ \ \ \ execlp(\textcolor{stringliteral}{"{}/bin/date"{}},\ \textcolor{stringliteral}{"{}date"{}},\ NULL);}
+\DoxyCodeLine{00046\ \ \ \ \ exit(0);}
+\DoxyCodeLine{00047\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ Parent\ process\ prints\ PIDs\ and\ waits\ for\ child}}
+\DoxyCodeLine{00049\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Parent\ Process\ ID:\ \%d\(\backslash\)nChild\ Process\ ID:\ \%d\(\backslash\)n"{}},\ getpid(),\ pid);}
+\DoxyCodeLine{00050\ \ \ \ \ wait(NULL);\ \textcolor{comment}{//\ Wait\ for\ the\ child\ process\ to\ complete}}
+\DoxyCodeLine{00051\ \ \ \ \ exit(0);}
+\DoxyCodeLine{00052\ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00055\ \}}
 
 \end{DoxyCode}

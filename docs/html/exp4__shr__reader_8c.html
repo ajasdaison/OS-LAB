@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>OS - LAB EXPIRIMENTS: src/exp3_a.c File Reference</title>
+<title>OS - LAB EXPIRIMENTS: src/exp4_shr_reader.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -77,7 +77,7 @@ $(function() { codefold.init(0); });
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('exp3__a_8c.html',''); initResizable(true); });
+$(function(){initNavTree('exp4__shr__reader_8c.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -105,33 +105,25 @@ $(function(){initNavTree('exp3__a_8c.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">exp3_a.c File Reference</div></div>
+  <div class="headertitle"><div class="title">exp4_shr_reader.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Demonstrates process creation using fork(), exec(), and wait() system calls.  
-<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &lt;sys/wait.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;sys/ipc.h&gt;</code><br />
+<code>#include &lt;sys/shm.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
 </div>
-<p><a href="exp3__a_8c_source.html">Go to the source code of this file.</a></p>
+<p><a href="exp4__shr__reader_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4" id="r_ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
-<tr class="memdesc:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a child process that executes the <code>date</code> command.  <br /></td></tr>
+<tr class="memdesc:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main function to create and write to shared memory.  <br /></td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Demonstrates process creation using fork(), exec(), and wait() system calls. </p>
-<p>This program creates a child process using <code>fork()</code>. The child process then replaces itself with the <code>/bin/date</code> command using <code>execlp()</code>. The parent process waits for the child process to complete using <code>wait()</code>. This demonstrates process control in Unix-based operating systems.</p>
-<dl class="section author"><dt>Author</dt><dd>Ajas Daison </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
-
-<p class="definition">Definition in file <a class="el" href="exp3__a_8c_source.html">exp3_a.c</a>.</p>
-</div><h2 class="groupheader">Function Documentation</h2>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="ae66f6b31b5ad750f1fe042a706a4e3d4" name="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&#160;</a></span>main()</h2>
 
@@ -147,40 +139,62 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Creates a child process that executes the <code>date</code> command. </p>
-<p>The function performs the following:</p><ul>
-<li>Calls <code>fork()</code> to create a new child process.</li>
-<li>If <code>fork()</code> fails, it prints an error message and exits.</li>
-<li>If <code>fork()</code> succeeds, the child process executes the <code>date</code> command using <code>execlp()</code>.</li>
-<li>The parent process prints its PID and the child's PID, then waits for the child to finish.</li>
+<p>Main function to create and write to shared memory. </p>
+<p>This function performs the following steps:</p><ul>
+<li>Creates a shared memory segment with key <code>1222</code>.</li>
+<li>Attaches the segment to the process's address space.</li>
+<li>Reads input from the user using <code>fgets()</code> and stores it in shared memory.</li>
+<li>Prints the shared memory address and content.</li>
+<li>Detaches the shared memory before exiting.</li>
 </ul>
-<dl class="section return"><dt>Returns</dt><dd>int Returns 0 upon successful execution. </dd></dl>
-<p>&lt; Variable to store the process ID</p>
+<dl class="section return"><dt>Returns</dt><dd>int Returns 0 on success, exits with error code 1 on failure. </dd></dl>
+<p>&lt; Pointer to the shared memory segment</p>
+<p>&lt; Buffer initialized to prevent uninitialized memory issues</p>
+<p>&lt; Shared memory segment ID</p>
 
-<p class="definition">Definition at line <a class="el" href="exp3__a_8c_source.html#l00033">33</a> of file <a class="el" href="exp3__a_8c_source.html">exp3_a.c</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   33</span>           {</div>
-<div class="line"><span class="lineno">   34</span>  <span class="keywordtype">int</span> pid; </div>
-<div class="line"><span class="lineno">   35</span> </div>
-<div class="line"><span class="lineno">   36</span>  <span class="comment">// Create a child process</span></div>
-<div class="line"><span class="lineno">   37</span>  pid = fork();</div>
-<div class="line"><span class="lineno">   38</span> </div>
-<div class="line"><span class="lineno">   39</span>  <span class="keywordflow">if</span> (pid &lt; 0) {</div>
-<div class="line"><span class="lineno">   40</span>    <span class="comment">// Check if fork failed</span></div>
-<div class="line"><span class="lineno">   41</span>    printf(<span class="stringliteral">&quot;fork failed\n&quot;</span>);</div>
+<p class="definition">Definition at line <a class="el" href="exp4__shr__reader_8c_source.html#l00032">32</a> of file <a class="el" href="exp4__shr__reader_8c_source.html">exp4_shr_reader.c</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   32</span>           {</div>
+<div class="line"><span class="lineno">   33</span>  <span class="keywordtype">void</span> *shared_memory; </div>
+<div class="line"><span class="lineno">   34</span>  <span class="keywordtype">char</span> buffer[100] = {</div>
+<div class="line"><span class="lineno">   35</span>      0};    </div>
+<div class="line"><span class="lineno">   36</span>  <span class="keywordtype">int</span> shmid; </div>
+<div class="line"><span class="lineno">   37</span> </div>
+<div class="line"><span class="lineno">   38</span>  <span class="comment">// Create a shared memory segment with key 1222 and size 1024 bytes</span></div>
+<div class="line"><span class="lineno">   39</span>  shmid = shmget((key_t)1222, 1024, 0666 | IPC_CREAT);</div>
+<div class="line"><span class="lineno">   40</span>  <span class="keywordflow">if</span> (shmid == -1) {</div>
+<div class="line"><span class="lineno">   41</span>    perror(<span class="stringliteral">&quot;shmget failed&quot;</span>);</div>
 <div class="line"><span class="lineno">   42</span>    exit(1);</div>
-<div class="line"><span class="lineno">   43</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (pid == 0) {</div>
-<div class="line"><span class="lineno">   44</span>    <span class="comment">// Child process executes &#39;date&#39; command</span></div>
-<div class="line"><span class="lineno">   45</span>    execlp(<span class="stringliteral">&quot;/bin/date&quot;</span>, <span class="stringliteral">&quot;date&quot;</span>, NULL);</div>
-<div class="line"><span class="lineno">   46</span>    exit(0);</div>
-<div class="line"><span class="lineno">   47</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   48</span>    <span class="comment">// Parent process prints PIDs and waits for child</span></div>
-<div class="line"><span class="lineno">   49</span>    printf(<span class="stringliteral">&quot;Parent Process ID: %d\nChild Process ID: %d\n&quot;</span>, getpid(), pid);</div>
-<div class="line"><span class="lineno">   50</span>    wait(NULL); <span class="comment">// Wait for the child process to complete</span></div>
-<div class="line"><span class="lineno">   51</span>    exit(0);</div>
+<div class="line"><span class="lineno">   43</span>  }</div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span>  printf(<span class="stringliteral">&quot;Shared Memory ID: %d\n&quot;</span>, shmid);</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>  <span class="comment">// Attach shared memory to process address space</span></div>
+<div class="line"><span class="lineno">   48</span>  shared_memory = shmat(shmid, NULL, 0);</div>
+<div class="line"><span class="lineno">   49</span>  <span class="keywordflow">if</span> (shared_memory == (<span class="keywordtype">void</span> *)-1) {</div>
+<div class="line"><span class="lineno">   50</span>    perror(<span class="stringliteral">&quot;shmat failed&quot;</span>);</div>
+<div class="line"><span class="lineno">   51</span>    exit(1);</div>
 <div class="line"><span class="lineno">   52</span>  }</div>
 <div class="line"><span class="lineno">   53</span> </div>
-<div class="line"><span class="lineno">   54</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   55</span>}</div>
+<div class="line"><span class="lineno">   54</span>  printf(<span class="stringliteral">&quot;Process attached at address: %p\n&quot;</span>, shared_memory);</div>
+<div class="line"><span class="lineno">   55</span>  printf(<span class="stringliteral">&quot;Enter some data to write to shared memory: \n&quot;</span>);</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>  <span class="comment">// Read input from user using fgets to avoid buffer overflow</span></div>
+<div class="line"><span class="lineno">   58</span>  <span class="keywordflow">if</span> (fgets(buffer, <span class="keyword">sizeof</span>(buffer), stdin) == NULL) {</div>
+<div class="line"><span class="lineno">   59</span>    perror(<span class="stringliteral">&quot;Error reading input&quot;</span>);</div>
+<div class="line"><span class="lineno">   60</span>    shmdt(shared_memory);</div>
+<div class="line"><span class="lineno">   61</span>    exit(1);</div>
+<div class="line"><span class="lineno">   62</span>  }</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>  <span class="comment">// Copy input to shared memory</span></div>
+<div class="line"><span class="lineno">   65</span>  strncpy((<span class="keywordtype">char</span> *)shared_memory, buffer, 100);</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>  printf(<span class="stringliteral">&quot;Data written to shared memory: %s\n&quot;</span>, (<span class="keywordtype">char</span> *)shared_memory);</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>  <span class="comment">// Detach shared memory</span></div>
+<div class="line"><span class="lineno">   70</span>  shmdt(shared_memory);</div>
+<div class="line"><span class="lineno">   71</span> </div>
+<div class="line"><span class="lineno">   72</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   73</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -189,7 +203,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="exp3__a_8c.html">exp3_a.c</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="exp4__shr__reader_8c.html">exp4_shr_reader.c</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>
