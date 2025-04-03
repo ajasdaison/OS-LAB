@@ -44,6 +44,8 @@ jobs:
 
       - name: Run Shared Memory Tests with Valgrind
         run: valgrind --leak-check=full --error-exitcode=1 ./scripts/run_shared_memory_test.sh
+
+      - name: Memory Tests for exp5
         run:  valgrind --leak-check=full --error-exitcode=1 ./scripts/exp5.sh
 
 
