@@ -109,7 +109,7 @@ $(function(){initNavTree('exp3__a_8c.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>Demonstrates process creation using fork(), exec(), and wait() system calls.  
+<p>Demonstrates process creation using fork(), exec(), and <a class="el" href="exp5_8c.html#a5707b25e46a5abb6a19f65efb29d0afb" title="Simulates the &quot;Wait&quot; operation on a semaphore.">wait()</a> system calls.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
@@ -125,8 +125,8 @@ Functions</h2></td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Demonstrates process creation using fork(), exec(), and wait() system calls. </p>
-<p>This program creates a child process using <code>fork()</code>. The child process then replaces itself with the <code>/bin/date</code> command using <code>execlp()</code>. The parent process waits for the child process to complete using <code>wait()</code>. This demonstrates process control in Unix-based operating systems.</p>
+<div class="textblock"><p>Demonstrates process creation using fork(), exec(), and <a class="el" href="exp5_8c.html#a5707b25e46a5abb6a19f65efb29d0afb" title="Simulates the &quot;Wait&quot; operation on a semaphore.">wait()</a> system calls. </p>
+<p>This program creates a child process using <code>fork()</code>. The child process then replaces itself with the <code>/bin/date</code> command using <code>execlp()</code>. The parent process waits for the child process to complete using <code><a class="el" href="exp5_8c.html#a5707b25e46a5abb6a19f65efb29d0afb" title="Simulates the &quot;Wait&quot; operation on a semaphore.">wait()</a></code>. This demonstrates process control in Unix-based operating systems.</p>
 <dl class="section author"><dt>Author</dt><dd>Ajas Daison </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
 
@@ -175,12 +175,13 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   47</span>  } <span class="keywordflow">else</span> {</div>
 <div class="line"><span class="lineno">   48</span>    <span class="comment">// Parent process prints PIDs and waits for child</span></div>
 <div class="line"><span class="lineno">   49</span>    printf(<span class="stringliteral">&quot;Parent Process ID: %d\nChild Process ID: %d\n&quot;</span>, getpid(), pid);</div>
-<div class="line"><span class="lineno">   50</span>    wait(NULL); <span class="comment">// Wait for the child process to complete</span></div>
+<div class="line"><span class="lineno">   50</span>    <a class="code hl_function" href="exp5_8c.html#a5707b25e46a5abb6a19f65efb29d0afb">wait</a>(NULL); <span class="comment">// Wait for the child process to complete</span></div>
 <div class="line"><span class="lineno">   51</span>    exit(0);</div>
 <div class="line"><span class="lineno">   52</span>  }</div>
 <div class="line"><span class="lineno">   53</span> </div>
 <div class="line"><span class="lineno">   54</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">   55</span>}</div>
+<div class="ttc" id="aexp5_8c_html_a5707b25e46a5abb6a19f65efb29d0afb"><div class="ttname"><a href="exp5_8c.html#a5707b25e46a5abb6a19f65efb29d0afb">wait</a></div><div class="ttdeci">int wait(int *S)</div><div class="ttdoc">Simulates the &quot;Wait&quot; operation on a semaphore.</div><div class="ttdef"><b>Definition</b> <a href="exp5_8c_source.html#l00029">exp5.c:29</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
