@@ -91,7 +91,10 @@ int main() {
 
   while (1) {
     printf("\nEnter your choice: ");
-    scanf("%d", &n);
+    if (scanf("%d", &n) != 1) {
+      printf("\nInvalid input! Exiting...\n");
+      break;
+    }
 
     switch (n) {
     case 1:
@@ -112,7 +115,8 @@ int main() {
       exit(0);
 
     default:
-      printf("\nInvalid choice!");
+      printf("\nInvalid choice! Exiting...\n");
+      return 0;
     }
   }
 

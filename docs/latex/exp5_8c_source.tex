@@ -49,32 +49,36 @@
 \DoxyCodeLine{\Hypertarget{exp5_8c_source_l00091}00091\ }
 \DoxyCodeLine{\Hypertarget{exp5_8c_source_l00092}00092\ \ \ \textcolor{keywordflow}{while}\ (1)\ \{}
 \DoxyCodeLine{\Hypertarget{exp5_8c_source_l00093}00093\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nEnter\ your\ choice:\ "{}});}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00094}00094\ \ \ \ \ scanf(\textcolor{stringliteral}{"{}\%d"{}},\ \&n);}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00095}00095\ }
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00096}00096\ \ \ \ \ \textcolor{keywordflow}{switch}\ (n)\ \{}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00097}00097\ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00098}00098\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\mbox{\hyperlink{exp5_8c_a8002f660436446f6416afe25f5c393ca}{mutex}}\ ==\ 1)\ \&\&\ (\mbox{\hyperlink{exp5_8c_a7d076984670ab0600048b27ffb9ccdc3}{empty}}\ !=\ 0))}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00099}00099\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{exp5_8c_a1fe91292d7d5e00d35744a41f5cf98a0}{producer}}();}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00100}00100\ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00101}00101\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nBuffer\ is\ full!!"{}});}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00102}00102\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00103}00103\ }
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00105}00105\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\mbox{\hyperlink{exp5_8c_a8002f660436446f6416afe25f5c393ca}{mutex}}\ ==\ 1)\ \&\&\ (\mbox{\hyperlink{exp5_8c_a3a0e8c0939ab76b5866a0bbad1d338e6}{full}}\ !=\ 0))}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00106}00106\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{exp5_8c_a34fcd32bc19052117fcca6360468d032}{consumer}}();}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00107}00107\ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00108}00108\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nBuffer\ is\ empty!!"{}});}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00109}00109\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00110}00110\ }
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00111}00111\ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00112}00112\ \ \ \ \ \ \ exit(0);}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00094}00094\ \ \ \ \ \textcolor{keywordflow}{if}\ (scanf(\textcolor{stringliteral}{"{}\%d"{}},\ \&n)\ !=\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00095}00095\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nInvalid\ input!\ Exiting...\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00096}00096\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00097}00097\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00099}00099\ \ \ \ \ \textcolor{keywordflow}{switch}\ (n)\ \{}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00100}00100\ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00101}00101\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\mbox{\hyperlink{exp5_8c_a8002f660436446f6416afe25f5c393ca}{mutex}}\ ==\ 1)\ \&\&\ (\mbox{\hyperlink{exp5_8c_a7d076984670ab0600048b27ffb9ccdc3}{empty}}\ !=\ 0))}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00102}00102\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{exp5_8c_a1fe91292d7d5e00d35744a41f5cf98a0}{producer}}();}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00103}00103\ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00104}00104\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nBuffer\ is\ full!!"{}});}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00105}00105\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00107}00107\ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00108}00108\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\mbox{\hyperlink{exp5_8c_a8002f660436446f6416afe25f5c393ca}{mutex}}\ ==\ 1)\ \&\&\ (\mbox{\hyperlink{exp5_8c_a3a0e8c0939ab76b5866a0bbad1d338e6}{full}}\ !=\ 0))}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00109}00109\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{exp5_8c_a34fcd32bc19052117fcca6360468d032}{consumer}}();}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00110}00110\ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00111}00111\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nBuffer\ is\ empty!!"{}});}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00112}00112\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
 \DoxyCodeLine{\Hypertarget{exp5_8c_source_l00113}00113\ }
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00114}00114\ \ \ \ \ \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00115}00115\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nInvalid\ choice!"{}});}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00116}00116\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00117}00117\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00118}00118\ }
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00119}00119\ \ \ \textcolor{keywordflow}{return}\ 0;}
-\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00120}00120\ \}}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00114}00114\ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00115}00115\ \ \ \ \ \ \ exit(0);}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00117}00117\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00118}00118\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nInvalid\ choice!\ Exiting...\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00119}00119\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00120}00120\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00121}00121\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00123}00123\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{exp5_8c_source_l00124}00124\ \}}
 
 \end{DoxyCode}

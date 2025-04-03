@@ -224,33 +224,37 @@ Variables</h2></td></tr>
 <div class="line"><span class="lineno">   91</span> </div>
 <div class="line"><span class="lineno">   92</span>  <span class="keywordflow">while</span> (1) {</div>
 <div class="line"><span class="lineno">   93</span>    printf(<span class="stringliteral">&quot;\nEnter your choice: &quot;</span>);</div>
-<div class="line"><span class="lineno">   94</span>    scanf(<span class="stringliteral">&quot;%d&quot;</span>, &amp;n);</div>
-<div class="line"><span class="lineno">   95</span> </div>
-<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">switch</span> (n) {</div>
-<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">case</span> 1:</div>
-<div class="line"><span class="lineno">   98</span>      <span class="keywordflow">if</span> ((<a class="code hl_variable" href="#a8002f660436446f6416afe25f5c393ca">mutex</a> == 1) &amp;&amp; (<a class="code hl_variable" href="#a7d076984670ab0600048b27ffb9ccdc3">empty</a> != 0))</div>
-<div class="line"><span class="lineno">   99</span>        <a class="code hl_function" href="#a1fe91292d7d5e00d35744a41f5cf98a0">producer</a>();</div>
-<div class="line"><span class="lineno">  100</span>      <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  101</span>        printf(<span class="stringliteral">&quot;\nBuffer is full!!&quot;</span>);</div>
-<div class="line"><span class="lineno">  102</span>      <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  103</span> </div>
-<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">case</span> 2:</div>
-<div class="line"><span class="lineno">  105</span>      <span class="keywordflow">if</span> ((<a class="code hl_variable" href="#a8002f660436446f6416afe25f5c393ca">mutex</a> == 1) &amp;&amp; (<a class="code hl_variable" href="#a3a0e8c0939ab76b5866a0bbad1d338e6">full</a> != 0))</div>
-<div class="line"><span class="lineno">  106</span>        <a class="code hl_function" href="#a34fcd32bc19052117fcca6360468d032">consumer</a>();</div>
-<div class="line"><span class="lineno">  107</span>      <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  108</span>        printf(<span class="stringliteral">&quot;\nBuffer is empty!!&quot;</span>);</div>
-<div class="line"><span class="lineno">  109</span>      <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  110</span> </div>
-<div class="line"><span class="lineno">  111</span>    <span class="keywordflow">case</span> 3:</div>
-<div class="line"><span class="lineno">  112</span>      exit(0);</div>
+<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">if</span> (scanf(<span class="stringliteral">&quot;%d&quot;</span>, &amp;n) != 1) {</div>
+<div class="line"><span class="lineno">   95</span>      printf(<span class="stringliteral">&quot;\nInvalid input! Exiting...\n&quot;</span>);</div>
+<div class="line"><span class="lineno">   96</span>      <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   97</span>    }</div>
+<div class="line"><span class="lineno">   98</span> </div>
+<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">switch</span> (n) {</div>
+<div class="line"><span class="lineno">  100</span>    <span class="keywordflow">case</span> 1:</div>
+<div class="line"><span class="lineno">  101</span>      <span class="keywordflow">if</span> ((<a class="code hl_variable" href="#a8002f660436446f6416afe25f5c393ca">mutex</a> == 1) &amp;&amp; (<a class="code hl_variable" href="#a7d076984670ab0600048b27ffb9ccdc3">empty</a> != 0))</div>
+<div class="line"><span class="lineno">  102</span>        <a class="code hl_function" href="#a1fe91292d7d5e00d35744a41f5cf98a0">producer</a>();</div>
+<div class="line"><span class="lineno">  103</span>      <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  104</span>        printf(<span class="stringliteral">&quot;\nBuffer is full!!&quot;</span>);</div>
+<div class="line"><span class="lineno">  105</span>      <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  106</span> </div>
+<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">case</span> 2:</div>
+<div class="line"><span class="lineno">  108</span>      <span class="keywordflow">if</span> ((<a class="code hl_variable" href="#a8002f660436446f6416afe25f5c393ca">mutex</a> == 1) &amp;&amp; (<a class="code hl_variable" href="#a3a0e8c0939ab76b5866a0bbad1d338e6">full</a> != 0))</div>
+<div class="line"><span class="lineno">  109</span>        <a class="code hl_function" href="#a34fcd32bc19052117fcca6360468d032">consumer</a>();</div>
+<div class="line"><span class="lineno">  110</span>      <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  111</span>        printf(<span class="stringliteral">&quot;\nBuffer is empty!!&quot;</span>);</div>
+<div class="line"><span class="lineno">  112</span>      <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  113</span> </div>
-<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">  115</span>      printf(<span class="stringliteral">&quot;\nInvalid choice!&quot;</span>);</div>
-<div class="line"><span class="lineno">  116</span>    }</div>
-<div class="line"><span class="lineno">  117</span>  }</div>
-<div class="line"><span class="lineno">  118</span> </div>
-<div class="line"><span class="lineno">  119</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  120</span>}</div>
+<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">case</span> 3:</div>
+<div class="line"><span class="lineno">  115</span>      exit(0);</div>
+<div class="line"><span class="lineno">  116</span> </div>
+<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  118</span>      printf(<span class="stringliteral">&quot;\nInvalid choice! Exiting...\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  119</span>      <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  120</span>    }</div>
+<div class="line"><span class="lineno">  121</span>  }</div>
+<div class="line"><span class="lineno">  122</span> </div>
+<div class="line"><span class="lineno">  123</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  124</span>}</div>
 <div class="ttc" id="aexp5_8c_html_a1fe91292d7d5e00d35744a41f5cf98a0"><div class="ttname"><a href="#a1fe91292d7d5e00d35744a41f5cf98a0">producer</a></div><div class="ttdeci">void producer()</div><div class="ttdoc">Producer function.</div><div class="ttdef"><b>Definition</b> <a href="exp5_8c_source.html#l00051">exp5.c:51</a></div></div>
 <div class="ttc" id="aexp5_8c_html_a34fcd32bc19052117fcca6360468d032"><div class="ttname"><a href="#a34fcd32bc19052117fcca6360468d032">consumer</a></div><div class="ttdeci">void consumer()</div><div class="ttdoc">Consumer function.</div><div class="ttdef"><b>Definition</b> <a href="exp5_8c_source.html#l00068">exp5.c:68</a></div></div>
 </div><!-- fragment -->

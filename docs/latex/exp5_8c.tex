@@ -115,33 +115,37 @@ Definition at line \mbox{\hyperlink{exp5_8c_source_l00087}{87}} of file \mbox{\h
 \DoxyCodeLine{00091\ }
 \DoxyCodeLine{00092\ \ \ \textcolor{keywordflow}{while}\ (1)\ \{}
 \DoxyCodeLine{00093\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nEnter\ your\ choice:\ "{}});}
-\DoxyCodeLine{00094\ \ \ \ \ scanf(\textcolor{stringliteral}{"{}\%d"{}},\ \&n);}
-\DoxyCodeLine{00095\ }
-\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordflow}{switch}\ (n)\ \{}
-\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\mbox{\hyperlink{exp5_8c_a8002f660436446f6416afe25f5c393ca}{mutex}}\ ==\ 1)\ \&\&\ (\mbox{\hyperlink{exp5_8c_a7d076984670ab0600048b27ffb9ccdc3}{empty}}\ !=\ 0))}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{exp5_8c_a1fe91292d7d5e00d35744a41f5cf98a0}{producer}}();}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nBuffer\ is\ full!!"{}});}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00103\ }
-\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\mbox{\hyperlink{exp5_8c_a8002f660436446f6416afe25f5c393ca}{mutex}}\ ==\ 1)\ \&\&\ (\mbox{\hyperlink{exp5_8c_a3a0e8c0939ab76b5866a0bbad1d338e6}{full}}\ !=\ 0))}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{exp5_8c_a34fcd32bc19052117fcca6360468d032}{consumer}}();}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nBuffer\ is\ empty!!"{}});}
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00110\ }
-\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
-\DoxyCodeLine{00112\ \ \ \ \ \ \ exit(0);}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordflow}{if}\ (scanf(\textcolor{stringliteral}{"{}\%d"{}},\ \&n)\ !=\ 1)\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nInvalid\ input!\ Exiting...\(\backslash\)n"{}});}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00097\ \ \ \ \ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordflow}{switch}\ (n)\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\mbox{\hyperlink{exp5_8c_a8002f660436446f6416afe25f5c393ca}{mutex}}\ ==\ 1)\ \&\&\ (\mbox{\hyperlink{exp5_8c_a7d076984670ab0600048b27ffb9ccdc3}{empty}}\ !=\ 0))}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{exp5_8c_a1fe91292d7d5e00d35744a41f5cf98a0}{producer}}();}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nBuffer\ is\ full!!"{}});}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\mbox{\hyperlink{exp5_8c_a8002f660436446f6416afe25f5c393ca}{mutex}}\ ==\ 1)\ \&\&\ (\mbox{\hyperlink{exp5_8c_a3a0e8c0939ab76b5866a0bbad1d338e6}{full}}\ !=\ 0))}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{exp5_8c_a34fcd32bc19052117fcca6360468d032}{consumer}}();}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nBuffer\ is\ empty!!"{}});}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
 \DoxyCodeLine{00113\ }
-\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nInvalid\ choice!"{}});}
-\DoxyCodeLine{00116\ \ \ \ \ \}}
-\DoxyCodeLine{00117\ \ \ \}}
-\DoxyCodeLine{00118\ }
-\DoxyCodeLine{00119\ \ \ \textcolor{keywordflow}{return}\ 0;}
-\DoxyCodeLine{00120\ \}}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ exit(0);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nInvalid\ choice!\ Exiting...\(\backslash\)n"{}});}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00120\ \ \ \ \ \}}
+\DoxyCodeLine{00121\ \ \ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00124\ \}}
 
 \end{DoxyCode}
 \Hypertarget{exp5_8c_a1fe91292d7d5e00d35744a41f5cf98a0}\index{exp5.c@{exp5.c}!producer@{producer}}
