@@ -16,7 +16,7 @@ sem_t empty;
 
 pthread_t prod, cons;
 
-void *producer(void *arg) {
+void *producer() {
   int item;
   for (int i = 0; i < ITERATIONS; i++) {
     item = rand() % 100;
@@ -36,7 +36,7 @@ void *producer(void *arg) {
   pthread_exit(NULL);
 }
 
-void *consumer(void *arg) {
+void *consumer() {
   int item;
   for (int i = 0; i < ITERATIONS; i++) {
     sem_wait(&full);
