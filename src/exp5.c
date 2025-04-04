@@ -56,7 +56,6 @@ void *consumer(void *arg) {
 }
 
 int main() {
-  int choice;
 
   // Initialize unnamed semaphores
   sem_init(&mutex, 0, 1);
