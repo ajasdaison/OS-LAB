@@ -37,7 +37,7 @@ jobs:
         run: |
           for file in src/*.c; do
             output=${file%.c}
-            if [ -f "$output" ] && [[ "$output" != "src/exp4_shr_writer" ]] && [[ "$output" != "src/exp4_shr_reader" ]]  && [[ "$output" != "src/exp6*" ]]  ; then
+            if [ -f "$output" ] && [[ "$output" != "src/exp4_shr_writer" ]] && [[ "$output" != "src/exp4_shr_reader" ]]  && [[ "$output" != src/exp6* ]]  ; then
               valgrind --leak-check=full --error-exitcode=1 ./$output || exit 1
             fi
           done
