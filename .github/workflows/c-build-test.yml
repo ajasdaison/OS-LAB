@@ -37,12 +37,14 @@ jobs:
         run: |
           for file in src/*.c; do
             output=${file%.c}
-            if [ -f "$output" ] && [[ "$output" != "src/exp4_shr_writer" ]] && [[ "$output" != "src/exp4_shr_reader" ]] ; then
+            if [ -f "$output" ] && [[ "$output" != "src/exp4_shr_writer" ]] && [[ "$output" != "src/exp4_shr_reader" ]]  && [[ "$output" != src/exp6* ]]  ; then
               valgrind --leak-check=full --error-exitcode=1 ./$output || exit 1
             fi
           done
 
-      - name: Run Shared Memory Tests with Valgrind
-        run: valgrind --leak-check=full --error-exitcode=1 ./scripts/run_shared_memory_test.sh
+      - name: Run additonal cheaks
+        run: valgrind --leak-check=full --error-exitcode=1 ./scripts/checks.sh
+
+
 
 
