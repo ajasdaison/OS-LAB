@@ -27,3 +27,19 @@ echo "Running exp6_b (SJF)..."
 8
 6
 EOF
+
+echo "----------------------------------------"
+
+# --- ROUND ROBIN (exp6_c.c) ---
+echo "Compiling exp6_c (ROUND ROBIN)..."
+gcc src/exp6_c.c -o src/exp6_c
+
+echo "Running exp6_c.c ......"
+./src/exp6_c <<EOF
+4
+5
+4
+5
+6
+3
+EOF
