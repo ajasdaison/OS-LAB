@@ -1,4 +1,4 @@
 #!/bin/bash
 
-./run_shared_memory_test.sh
-./fcfs.sh
+./scripts/run_shared_memory_test.sh
+./scripts/fcfs.sh
