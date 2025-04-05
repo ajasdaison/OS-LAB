@@ -7,8 +7,8 @@ This repository contains C programming lab experiments for college coursework. T
 ```
 /YourRepo
 │── src/                  # Contains all C program experiments
-│   ├── exp3_a.c          # Experiment 3A - Process creation and execution
-│   ├── exp3_b.c          # Experiment 3B - File handling using stat()
+│   ├── [exp3_a.c](src/exp3_a.c)          # Experiment 3A - Process creation and execution
+│   ├── [exp3_b.c](src/exp3_b.c)          # Experiment 3B - File handling using stat()
 │   ├── exp3_c.c          # Experiment 3C - Directory handling using opendir(), readdir()
 │   ├── exp4_shr_writer.c # Experiment 4 - Shared memory communication (Writer)
 │   ├── exp4_shr_reader.c # Experiment 4 - Shared memory communication (Reader)
