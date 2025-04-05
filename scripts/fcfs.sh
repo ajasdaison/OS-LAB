@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Compile the C program
-gcc exp6_a.c -o exp6_a
+gcc src/exp6_a.c -o src/exp6_a
 
 # Run the compiled program and provide inputs
-./exp6_a <<EOF
+./src/exp6_a <<EOF
 4
 5
 3
