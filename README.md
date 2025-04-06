@@ -80,11 +80,11 @@ in a web browser.
 - Implements **Inter-Process Communication (IPC)** using shared memory.
 - Demonstrates how memory can be shared between different processes.
 
-- The [**`🔗shared_writer.c`**](src/exp4_shr_writer) program:
+- The [**`🔗shared_writer.c`**](src/exp4_shr_writer.c) program:
   - Creates a shared memory segment.
   - Writes user input into the shared memory.
 
-- The [**`🔗exp4_shr_reader.c`**](src/exp4_shr_reader) program:
+- The [**`🔗exp4_shr_reader.c`**](src/exp4_shr_reader.c) program:
   - Reads data from the shared memory.
   - Displays the content written by another process.
   - Detaches and removes the shared memory segment after reading.
