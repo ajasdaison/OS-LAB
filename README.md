@@ -5,7 +5,7 @@ This repository contains C programming lab experiments for college coursework. T
 ## 📂 Repository Structure
 
 ```
-/YourRepo
+/OS-LAB
 │── src/                  # Contains all C program experiments
 │   ├── exp3_a.c          # Experiment 3A - Process creation and execution
 │   ├── exp3_b.c          # Experiment 3B - File handling using stat()
@@ -17,6 +17,7 @@ This repository contains C programming lab experiments for college coursework. T
 │   ├── exp6_b.c          # Experiment 6B - SJF Scheduling
 │   ├── exp6_c.c          # Experiment 6C - Round Robin Scheduling
 │   ├── exp6_d.c          # Experiment 6D - Priority Scheduling
+│── CMakeLists.txt        # CMake Setup
 │── README.md             # This file
 │── Doxyfile              # Configuration file for Doxygen
 │── docs/                 # Auto-generated documentation (after running Doxygen)
