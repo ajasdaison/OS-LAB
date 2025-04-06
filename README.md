@@ -7,6 +7,10 @@ This repository contains C programming lab experiments for college coursework. T
 ```
 /OS-LAB
 │── src/                  # Contains all C program experiments
+│   ├── exp2_a.sh         # Experiment 2A: Check Even or Odd
+│   ├── exp2_b.sh         # Experiment 2B: Find the Bigger of Two Numbers 
+│   ├── exp2_c.sh         # Experiment 2C: Factorial Using While Loop
+│   ├── exp2_d.sh         # Experiment 2D: Simple Calculator 
 │   ├── exp3_a.c          # Experiment 3A - Process creation and execution
 │   ├── exp3_b.c          # Experiment 3B - File handling using stat()
 │   ├── exp3_c.c          # Experiment 3C - Directory handling using opendir(), readdir()
@@ -17,6 +21,11 @@ This repository contains C programming lab experiments for college coursework. T
 │   ├── exp6_b.c          # Experiment 6B - SJF Scheduling
 │   ├── exp6_c.c          # Experiment 6C - Round Robin Scheduling
 │   ├── exp6_d.c          # Experiment 6D - Priority Scheduling
+│   ├── exp7_a.c          # Experiment 7A: First Fit Memory Allocation
+│   ├── exp7_b.c          # Experiment 7B: Worst Fit Memory Allocation
+│   ├── exp7_c.c          # Experiment 7C: Best Fit Memory Allocation
+│   ├── exp8.c            # Experiment 8: FIFO Page Replacement
+│   ├── exp9.c            # Experiment 9: Banker's Algorithm
 │   ├── exp10_a.c         # Experiment 10A - FCFS Disk Scheduling
 │   ├── exp10_b.c         # Experiment 10B - SCAN Disk Scheduling
 │   ├── exp10_c.c         # Experiment 10C - C-SCAN Disk Scheduling
@@ -65,6 +74,25 @@ open docs/html/index.html
 in a web browser.
 
 ## 📜 Experiments Overview
+
+### [**🔗 Experiment 2A: Check Even or Odd**](src/exp2_a.sh)
+
+Checks whether a given number is even or odd.
+Takes input from the user and uses modulus operation.
+
+### [**🔗 Experiment 2B: Find the Bigger of Two Numbers**](src/exp2_b.sh)
+
+Compares two numbers and prints the larger one.
+
+### [**🔗 Experiment 2C: Factorial Using While Loop**](src/exp2_c.sh)
+
+Calculates the factorial of a number using a while loop.
+Uses basic arithmetic with expr.
+
+### [**🔗 Experiment 2D: Simple Calculator**](src/exp2_d.sh)
+
+Implements a simple calculator using case statement.
+Supports addition, subtraction, multiplication, division.
 
 ### [**🔗 Experiment 3A: Process Handling**](src/exp3_a.c)
 
@@ -129,6 +157,38 @@ in a web browser.
 - Lower numerical value = higher priority.
 - Calculates and displays waiting and turnaround times.
 - Shows process order after sorting by priority.
+
+### [**🔗 Experiment 7A: First Fit Memory Allocation**](src/exp7_a.c)
+
+Allocates memory to the first block that is large enough.
+Marks blocks as used once a process is allocated.
+Reports processes that couldn’t be allocated due to insufficient block size.
+
+### [**🔗 Experiment 7B: Worst Fit Memory Allocation**](src/exp7_b.c)
+
+Sorts memory blocks in descending order.
+Allocates each process to the largest available block (worst fit).
+Ensures large blocks are filled first, aiming to leave more usable small spaces.
+Displays allocation status of all processes.
+
+### [**🔗 Experiment 7C: Best Fit Memory Allocation**](src/exp7_c.c)
+
+Sorts memory blocks in ascending order.
+Allocates memory to the smallest block that fits the process.
+Ensures minimum internal fragmentation.
+Displays memory partitioning and allocation decisions.
+
+### [**🔗 Experiment 8: FIFO Page Replacement**](src/exp8.c)
+
+Simulates the First-In-First-Out (FIFO) page replacement strategy.
+Displays the state of frames after each page reference.
+Calculates and prints the total number of page faults.
+
+### [**🔗 Experiment 9: Banker's Algorithm**](src/exp9.c)
+
+Implements the Banker's Algorithm for safe resource allocation.
+Computes the Need matrix and determines the safe sequence.
+Identifies whether the system is in a safe or unsafe state.
 
 ### **💿 Disk Scheduling Experiments**
 
