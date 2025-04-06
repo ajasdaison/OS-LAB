@@ -1,1 +1,0 @@
-/usr/bin/cc  -Wall -Wextra -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/exp6_d.dir/src/exp6_d.c.o -o exp6_d

@@ -1,1 +1,0 @@
-/usr/bin/cc  -Wall -Wextra -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/exp7_b.dir/src/exp7_b.c.o -o exp7_b
