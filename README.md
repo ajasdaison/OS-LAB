@@ -67,11 +67,11 @@ in a web browser.
 - Demonstrates **fork()** and **execlp()** for process creation and execution.
 - Uses **wait()** to synchronize the parent and child process.
 
-### **🔹 Experiment 3B: File Handling**
+### [**🔗 Experiment 3B: File Handling**](src/exp3_b.c)
 
 - Uses **stat()** to retrieve file metadata (permissions, size, owner ID, etc.).
 
-### **🔹 Experiment 3C: Directory Handling**
+### [**🔗 Experiment 3C: Directory Handling**](src/exp3_c.c)
 
 - Uses **opendir(), readdir(), closedir()** to list files in a directory.
 
@@ -80,16 +80,16 @@ in a web browser.
 - Implements **Inter-Process Communication (IPC)** using shared memory.
 - Demonstrates how memory can be shared between different processes.
 
-- The **`shared_writer.c`** program:
+- The [**`🔗shared_writer.c`**](src/exp4_shr_writer) program:
   - Creates a shared memory segment.
   - Writes user input into the shared memory.
 
-- The **`exp4_shr_reader.c`** program:
+- The [**`🔗exp4_shr_reader.c`**](src/exp4_shr_reader) program:
   - Reads data from the shared memory.
   - Displays the content written by another process.
   - Detaches and removes the shared memory segment after reading.
 
-### **🔹 Experiment 5: Producer-Consumer Problem using Semaphores**
+### [**🔗 Experiment 5: Producer-Consumer Problem using Semaphores**](src/exp5.c)
 
 - Demonstrates synchronization between multiple processes using semaphores.
 - Implements a **producer-consumer** model with a shared buffer of size 3.
@@ -101,25 +101,25 @@ in a web browser.
   - Allows the user to choose between producing or consuming an item.
 
 
-### 🔹 Experiment 6A: FCFS (First Come First Serve) Scheduling
+### [**🔗 Experiment 6A: FCFS (First Come First Serve) Scheduling**](src/exp6_a.c)
  
 - Implements basic FCFS scheduling.
 - Calculates waiting time and turnaround time.
 - Displays average waiting and turnaround times.
 
-### 🔹 Experiment 6B: SJF (Shortest Job First) Scheduling
+### [**🔗 Experiment 6B: SJF (Shortest Job First) Scheduling**](src/exp6_b.c)
 
 - Implements non-preemptive SJF scheduling.
 - Sorts processes by burst time before calculating waiting and turnaround times.
 - Displays sorted process execution order and averages.
 
-### 🔹 Experiment 6C: Round Robin Scheduling
+### [**🔗 Experiment 6C: Round Robin Scheduling**](src/exp6_c.c)
 
 - Uses time slicing to switch between processes.
 - Calculates completion time, waiting time, and turnaround time.
 - Accepts user-defined time quantum for the scheduler.
 
-### 🔹 Experiment 6D: Priority Scheduling
+### [**🔗 Experiment 6D: Priority Scheduling**](src/exp6_d.c)
 
 - Processes are scheduled based on user-defined priorities.
 - Lower numerical value = higher priority.
