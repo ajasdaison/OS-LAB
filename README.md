@@ -17,6 +17,9 @@ This repository contains C programming lab experiments for college coursework. T
 │   ├── exp6_b.c          # Experiment 6B - SJF Scheduling
 │   ├── exp6_c.c          # Experiment 6C - Round Robin Scheduling
 │   ├── exp6_d.c          # Experiment 6D - Priority Scheduling
+│   ├── exp10_a.c         # Experiment 10A - FCFS Disk Scheduling
+│   ├── exp10_b.c         # Experiment 10B - SCAN Disk Scheduling
+│   ├── exp10_c.c         # Experiment 10C - C-SCAN Disk Scheduling
 │── CMakeLists.txt        # CMake Setup
 │── README.md             # This file
 │── Doxyfile              # Configuration file for Doxygen
@@ -126,6 +129,38 @@ in a web browser.
 - Lower numerical value = higher priority.
 - Calculates and displays waiting and turnaround times.
 - Shows process order after sorting by priority.
+
+### **💿 Disk Scheduling Experiments**
+
+### [**🔗 Experiment 10A: FCFS Disk Scheduling**](src/exp10_a.c)
+
+- Implements First-Come First-Serve (FCFS) disk scheduling algorithm.
+- Calculates seek time for each disk request in the given order.
+- Displays disk head movement and computes:
+    - Total Seek Time
+    - Average Seek Time
+
+### [**🔗 Experiment 10B: SCAN Disk Scheduling (Elevator Algorithm)**](src/exp10_b.c)
+
+- Simulates SCAN (Elevator) disk scheduling algorithm.
+- Moves disk arm from current head position to 0, then to end of the list.
+- Displays track traversal in the SCAN direction.
+- Outputs:
+
+   - Track Traversal
+   - Seek Differences
+   - Total and Average Head Movement
+
+### [**🔗 Experiment 10C: C-SCAN Disk Scheduling**](src/exp10_c.c)
+
+- Implements C-SCAN (Circular SCAN) algorithm.
+- Moves the head to the end of the disk, wraps around to 0, and continues.
+- Requests are handled in one direction only.
+- Output includes:
+
+   - Track Traversal Order
+   - Seek Difference between tracks
+   - Total and Average Head Movement
 
 ---
 
