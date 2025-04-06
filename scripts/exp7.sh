@@ -35,3 +35,22 @@ echo "Running exp7_b.c ...."
 2
 4
 EOF
+
+echo "_______________________________"
+
+# --- BEST FIT (exp7_c.c) ---
+echo "Compiling the Best Fit (exp7_c) ..."
+gcc src/exp7_c.c -o src/exp7_c
+
+echo "Running exp7_c.c ...."
+./src/exp7_c <<EOF
+3
+4
+3
+4
+4
+5
+3
+2
+4
+EOF
